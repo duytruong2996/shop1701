@@ -2,9 +2,8 @@
 
 class BaseController {
 
-    function loadView($view, $data=[]){
-        
-        include_once 'layout.view.php';
+    function loadView($view="home", $data=[]){ 
+        include_once 'view/layout.view.php';
     }
 
 }
