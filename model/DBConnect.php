@@ -3,7 +3,7 @@ class DBConnect{
 
     private $connect;
 
-    function __construct($dbName = 'php1701_banhang',$user = 'root',$password = ''){
+    function __construct($dbName = 'apple',$user = 'root',$password = ''){
         try{
             $this->connect = new PDO("mysql:host=localhost;dbname=$dbName",$user,$password);
             $this->connect->exec('set names utf8');
@@ -40,7 +40,7 @@ class DBConnect{
     }
 
     // SELECT MORE ROWS
-    function LoadMoreRows($query,$params = []){
+    function loadMoreRows($query,$params = []){
         $stmt = $this->setStatement($query,$params);
 
         $result = $stmt->execute();
