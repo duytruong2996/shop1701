@@ -187,318 +187,48 @@
                 </div>
                 <div class="mega-menu-category">
                   <ul class="nav">
+                   
+                    <?php foreach($categories as $c):
+                    if($c->submenu !=''):
+                    ?>
                     <li>
-                      <a href="#">
-                        <i class="icon fa fa-camera fa-fw"></i> Camera & Photo</a>
+                      <a href="<?=$c->url?>">
+                        <i class="icon fa <?=$c->icon?> fa-fw"></i> <?=$c->name?></a>
                       <div class="wrap-popup column1">
                         <div class="popup">
                           <div class="row">
                             <div class="col-md-12">
                               <ul class="nav">
+                                <?php 
+                                $subMenu = explode(',',$c->submenu);
+                                
+                                //print_r($subMenu);
+                                foreach($subMenu as $sub):
+                                  $sub = explode('::',$sub);
+                        
+                                ?>
+
                                 <li>
-                                  <a href="shop_grid.html">
-                                    <span>Canon</span>
+                                  <a href="<?=$sub[1]?>">
+                                    <span><?=$sub[0]?></span>
                                   </a>
                                 </li>
-                                <li>
-                                  <a href="shop_grid.html">
-                                    <span>Nikon</span>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="shop_grid.html">
-                                    <span>Olympus</span>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="shop_grid.html">
-                                    <span>ALPA</span>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="shop_grid.html">
-                                    <span>Bolex</span>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="shop_grid.html">
-                                    <span>Samsung </span>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="shop_grid.html">
-                                    <span>Panasonic</span>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="shop_grid.html">
-                                    <span>Thomson </span>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="shop_grid.html">
-                                    <span>Bell & Howell</span>
-                                  </a>
-                                </li>
+                                <? endforeach?>
+                                
                               </ul>
                             </div>
                           </div>
                         </div>
                       </div>
                     </li>
-                    <li>
-                      <a href="#">
-                        <i class="icon fa fa-desktop fa-fw"></i> Computers</a>
-                      <div class="wrap-popup column1">
-                        <div class="popup">
-                          <div class="row">
-                            <div class="col-md-12">
-                              <ul class="nav">
-                                <li>
-                                  <a href="shop_grid.html">
-                                    <span>Canon</span>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="shop_grid.html">
-                                    <span>Nikon</span>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="shop_grid.html">
-                                    <span>Olympus</span>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="shop_grid.html">
-                                    <span>ALPA</span>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="shop_grid.html">
-                                    <span>Bolex</span>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="shop_grid.html">
-                                    <span>Samsung </span>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="shop_grid.html">
-                                    <span>Panasonic</span>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="shop_grid.html">
-                                    <span>Thomson </span>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="shop_grid.html">
-                                    <span>Bell & Howell</span>
-                                  </a>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <a href="shop_grid.html">
-                        <i class="icon fa fa-apple fa-fw"></i> Apple Store</a>
-                      <div class="wrap-popup column1">
-                        <div class="popup">
-                          <div class="row">
-                            <div class="col-md-12">
-                              <ul class="nav">
-                                <li>
-                                  <a href="shop_grid.html">
-                                    <span>Canon</span>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="shop_grid.html">
-                                    <span>Nikon</span>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="shop_grid.html">
-                                    <span>Olympus</span>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="shop_grid.html">
-                                    <span>ALPA</span>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="shop_grid.html">
-                                    <span>Bolex</span>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="shop_grid.html">
-                                    <span>Samsung </span>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="shop_grid.html">
-                                    <span>Panasonic</span>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="shop_grid.html">
-                                    <span>Thomson </span>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="shop_grid.html">
-                                    <span>Bell & Howell</span>
-                                  </a>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
+                    <? else:?>
+
                     <li class="nosub">
-                      <a href="#">
-                        <i class="icon fa fa-location-arrow fa-fw"></i> Car Electronic</a>
+                      <a href="<?=$c->url?>">
+                        <i class="icon fa <?=$c->icon?> fa-fw"></i><?=$c->name?></a>
                     </li>
-                    <li>
-                      <a href="shop_grid.html">
-                        <i class="icon fa fa-headphones fa-fw"></i> Headphones</a>
-                      <div class="wrap-popup column1">
-                        <div class="popup">
-                          <ul class="nav">
-                            <li>
-                              <a href="shop_grid.html">
-                                <span>Envent Stereo</span>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="shop_grid.html">
-                                <span>Sennheiser</span>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="shop_grid.html">
-                                <span>Philips</span>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="shop_grid.html">
-                                <span>Sony</span>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="shop_grid.html">
-                                <span>Avantree</span>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="shop_grid.html">
-                                <span>Bajaao</span>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="shop_grid.html">
-                                <span>FiiO</span>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="shop_grid.html">
-                                <span>Audio-Technica</span>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="shop_grid.html">
-                                <span>LUXA2</span>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="shop_grid.html">
-                                <span>Geekria</span>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i class="icon fa fa-microphone fa-fw"></i> Accessories</a>
-                      <div class="wrap-popup column1">
-                        <div class="popup">
-                          <div class="row">
-                            <div class="col-md-12">
-                              <ul class="nav">
-                                <li>
-                                  <a href="shop_grid.html">
-                                    <span>Canon</span>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="shop_grid.html">
-                                    <span>Nikon</span>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="shop_grid.html">
-                                    <span>Olympus</span>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="shop_grid.html">
-                                    <span>ALPA</span>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="shop_grid.html">
-                                    <span>Bolex</span>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="shop_grid.html">
-                                    <span>Samsung </span>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="shop_grid.html">
-                                    <span>Panasonic</span>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="shop_grid.html">
-                                    <span>Thomson </span>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="shop_grid.html">
-                                    <span>Bell & Howell</span>
-                                  </a>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="nosub">
-                      <a href="shop_grid.html">
-                        <i class="icon fa fa-gamepad fa-fw"></i> Game &amp; Video</a>
-                    </li>
-                    <li class="nosub">
-                      <a href="shop_grid.html">
-                        <i class="glyphicon glyphicon-time"></i> Watches</a>
-                    </li>
-                    <li class="nosub">
-                      <a href="shop_grid.html">
-                        <i class="icon fa fa-lightbulb-o fa-fw"></i> Lights &amp; Lighting</a>
-                    </li>
+                    <?endif?>
+                    <?endforeach?>
                   </ul>
                 </div>
               </div>
