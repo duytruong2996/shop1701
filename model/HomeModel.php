@@ -13,6 +13,17 @@ class HomeModel extends DBConnect{
         return $this->loadMoreRows($sql);
     }
 
+    function selectBestSeller(){
+        $sql = "SELECT p.*, sum(bd.quantity) as tongsoluong
+                FROM products p
+                INNER JOIN bill_detail bd
+                ON p.id = bd.id_product
+                GROUP BY bd.id_product
+                ORDER BY tongsoluong DESC
+                LIMIT 0,10";
+        return $this->loadMoreRows($sql);        
+    }
+
     /*
         SELECT url.url, menu.name, GROUP_CONCAT(sub.name, '::' ,sub.url ) as submenu 
         FROM (
