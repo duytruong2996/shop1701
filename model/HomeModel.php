@@ -8,6 +8,11 @@ class HomeModel extends DBConnect{
         return $this->loadMoreRows($sql);
     }
 
+    function selectFeatureProduct(){
+        $sql = "SELECT * FROM products WHERE status = 1";
+        return $this->loadMoreRows($sql);
+    }
+
     /*
         SELECT url.url, menu.name, GROUP_CONCAT(sub.name, '::' ,sub.url ) as submenu 
         FROM (

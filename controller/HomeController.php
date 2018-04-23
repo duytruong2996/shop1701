@@ -6,9 +6,11 @@ class HomeController extends BaseController{
     function getHome(){
         $model = new HomeModel();
         $slide = $model->selectSlide();
+        $featureProducts = $model->selectFeatureProduct();
 
         $data = [
-            'slide' => $slide
+            'slide' => $slide,
+            'featureProducts' => $featureProducts
         ];
 
         return $this->loadView('home',$data);

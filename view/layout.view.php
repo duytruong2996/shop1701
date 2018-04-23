@@ -193,7 +193,8 @@
                     ?>
                     <li>
                       <a href="<?=$c->url?>">
-                        <i class="icon fa <?=$c->icon?> fa-fw"></i> <?=$c->name?></a>
+                        <i class="icon fa <?=$c->icon?> fa-fw"></i> <?=$c->name?>
+                      </a>
                       <div class="wrap-popup column1">
                         <div class="popup">
                           <div class="row">
@@ -225,7 +226,8 @@
 
                     <li class="nosub">
                       <a href="<?=$c->url?>">
-                        <i class="icon fa <?=$c->icon?> fa-fw"></i><?=$c->name?></a>
+                        <i class="icon fa <?=$c->icon?> fa-fw"></i><?=$c->name?>
+                      </a>
                     </li>
                     <?endif?>
                     <?endforeach?>
