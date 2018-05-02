@@ -1,0 +1,7 @@
+RewriteEngine on
+
+RewriteRule ^([a-z0-9-()]+)$ type.php?alias=$1
+
+RewriteRule ^404.html$ 404.php
+
+ErrorDocument 404 /shop1701/404.html
