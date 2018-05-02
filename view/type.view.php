@@ -1,4 +1,4 @@
-<?
+<?php
 $products = $data['result']
 ?>
     <!-- Main Container -->
@@ -109,7 +109,7 @@ $products = $data['result']
                       </div>
                     </div>
                   </li>
-                  <? endforeach;
+                  <?php endforeach;
                   else:
                     echo "<h2>Sản phẩm đang được cập nhật</h2>";
                   endif;

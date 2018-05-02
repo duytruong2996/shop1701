@@ -214,7 +214,7 @@
                                     <span><?=$sub[0]?></span>
                                   </a>
                                 </li>
-                                <? endforeach?>
+                                <?php endforeach?>
                                 
                               </ul>
                             </div>
@@ -222,15 +222,15 @@
                         </div>
                       </div>
                     </li>
-                    <? else:?>
+                    <?php else:?>
 
                     <li class="nosub">
                       <a href="<?=$c->url?>">
                         <i class="icon fa <?=$c->icon?> fa-fw"></i><?=$c->name?>
                       </a>
                     </li>
-                    <?endif?>
-                    <?endforeach?>
+                    <?php endif;?>
+                    <?php endforeach?>
                   </ul>
                 </div>
               </div>
