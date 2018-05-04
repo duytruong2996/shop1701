@@ -8,16 +8,21 @@ class TypeController extends BaseController{
         $alias = isset($_GET['alias']) ? $_GET['alias'] : header('Location:404.html');
 
         $model = new TypeModel();
-        $result = $model->selectProductsByTypeLevel2($alias);
-        $nameType = $model->getNameType($alias);
 
-        if(count($result)==0 || count($nameType)==0){
+        $type = $model->getNameType($alias);
+        if($type->id_parent == NULL)
+            $result = $model->selectProductsByTypeLevel1($alias);
+        else $result = $model->selectProductsByTypeLevel2($alias);
+
+        //print_r($type); die;
+
+        if(count($result)==0 || $type == ''){
             header('Location:404.html');
             return;
         }
         $data = [
             'result'=>$result,
-            'nameType'=>$nameType
+            'nameType'=>$type
         ];
         //print_r($data); die;
 
