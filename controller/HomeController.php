@@ -14,6 +14,7 @@ class HomeController extends BaseController{
             'featureProducts' => $featureProducts,
             'bestSeller'=>$bestSeller
         ];
+        //print_r($featureProducts); die;
 
         return $this->loadView('home',$data);
     }

@@ -14,7 +14,7 @@ class TypeController extends BaseController{
             $result = $model->selectProductsByTypeLevel1($alias);
         else $result = $model->selectProductsByTypeLevel2($alias);
 
-        //print_r($type); die;
+        //print_r($result); die;
 
         if(count($result)==0 || $type == ''){
             header('Location:404.html');
