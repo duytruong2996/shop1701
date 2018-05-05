@@ -7,10 +7,17 @@ class TypeModel extends DBConnect{
     //UPDATE products SET id_type=id_type-1
     function selectProductsByTypeLevel2($alias){
         $sql = "SELECT p.*, u.url
-                FROM products p
-                INNER JOIN page_url u
-                ON p.id_type = u.id
-                WHERE u.url = '$alias'";
+                FROM products p 
+                INNER JOIN (
+                    SELECT c.* 
+                    FROM categories c
+                    INNER JOIN page_url u 
+                    ON u.id = c.id_url
+                    WHERE u.url = '$alias'
+                ) type
+                ON p.id_type = type.id
+                INNER JOIN page_url u 
+                ON p.id_url = u.id";
         return $this->loadMoreRows($sql);
     }
     function getNameType($alias){
@@ -22,49 +29,24 @@ class TypeModel extends DBConnect{
         return $this->loadOneRow($sql);
     }
 
-    /**
-     * 
-     * 
-     * 
-            SELECT p.*
-                FROM (
-                    SELECT c.id, c.id_url,url.url FROM categories c 
-                    INNER JOIN page_url url ON url.id = c.id_url 
-                    WHERE c.id_parent IS NULL
-                ) menu
-                LEFT JOIN ( 
-                    SELECT c.id_parent,c.id as idSub, url.url 
-                    FROM `categories` c 
-                    INNER JOIN page_url url ON url.id = c.id_url 
-                    WHERE c.id_parent IS NOT NULL 
-                ) sub 
-                ON menu.id = sub.id_parent 
-                INNER JOIN page_url url 
-                ON url.id = menu.id_url
-                LEFT JOIN products p 
-                ON p.id_type = sub.idSub
-                WHERE menu.url = 'iphone'
-     */
 
     function selectProductsByTypeLevel1($alias){
-        $sql = "SELECT p.*
-                FROM (
-                    SELECT c.id, c.id_url,url.url FROM categories c 
-                    INNER JOIN page_url url ON url.id = c.id_url 
-                    WHERE c.id_parent IS NULL
-                ) menu
-                LEFT JOIN ( 
-                    SELECT c.id_parent,c.id as idSub, url.url 
-                    FROM `categories` c 
-                    INNER JOIN page_url url ON url.id = c.id_url 
-                    WHERE c.id_parent IS NOT NULL 
-                ) sub 
-                ON menu.id = sub.id_parent 
-                INNER JOIN page_url url 
-                ON url.id = menu.id_url
-                LEFT JOIN products p 
-                ON p.id_type = sub.idSub
-                WHERE menu.url = '$alias'";
+        $sql = "SELECT p.*, pu.url
+                FROM products p 
+                INNER JOIN(
+                    SELECT c.*
+                    FROM categories c 
+                    WHERE c.id_parent = (
+                        SELECT c2.id 
+                        FROM categories c2
+                        INNER JOIN page_url u 
+                        ON u.id = c2.id_url
+                        WHERE u.url = '$alias'
+                    )
+                ) type 
+                ON type.id = p.id_type
+                INNER JOIN page_url pu 
+                ON pu.id = p.id_url";
         return $this->loadMoreRows($sql);           
     }
 }

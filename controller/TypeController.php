@@ -10,11 +10,10 @@ class TypeController extends BaseController{
         $model = new TypeModel();
 
         $type = $model->getNameType($alias);
-        if($type->id_parent == NULL)
-            $result = $model->selectProductsByTypeLevel1($alias);
-        else $result = $model->selectProductsByTypeLevel2($alias);
+        $result = $model->selectProductsByTypeLevel1($alias);
 
-        //print_r($result); die;
+        if(count($result) == 0)
+            $result = $model->selectProductsByTypeLevel2($alias);
 
         if(count($result)==0 || $type == ''){
             header('Location:404.html');
