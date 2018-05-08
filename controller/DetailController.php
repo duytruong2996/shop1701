@@ -10,15 +10,18 @@ class DetailController extends BaseController{
 
         $model = new DetailModel();
         $product = $model->selectDetailProduct($alias,$id);
+        $idType = $product->id_type;
+        $relatedProducts = $model->selectRelatedProduct($idType,$id);
 
         if($alias =='' || $id == 0 || $product == ''){
             header('Location:404.html');
             return;
         }
         $data = [
-            'product'=>$product
+            'product'=>$product,
+            'relatedProducts'=>$relatedProducts
         ];
-        print_r($product); die;
+        //print_r($relatedProducts); die;
         return $this->loadView('detail', $data);
     }
 

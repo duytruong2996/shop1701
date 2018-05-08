@@ -12,6 +12,16 @@ class DetailModel extends DBConnect{
         return $this->loadOneRow($sql);
     }
 
+    function selectRelatedProduct($idType,$idProduct){
+        $sql = "SELECT p.*, u.url
+                FROM `products` p 
+                INNER JOIN page_url u 
+                ON u.id = p.id_url
+                WHERE id_type = $idType
+                AND p.id <> $idProduct";
+        return $this->loadMoreRows($sql);
+    }
+
 
 }
 

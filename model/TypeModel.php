@@ -5,7 +5,7 @@ include_once 'DBConnect.php';
 class TypeModel extends DBConnect{
 
     //UPDATE products SET id_type=id_type-1
-    function selectProductsByTypeLevel2($alias){
+    function selectProductsByTypeLevel2($alias,$position=0,$qty = 0){
         $sql = "SELECT p.*, u.url
                 FROM products p 
                 INNER JOIN (
@@ -18,6 +18,9 @@ class TypeModel extends DBConnect{
                 ON p.id_type = type.id
                 INNER JOIN page_url u 
                 ON p.id_url = u.id";
+        if($qty != 0)
+                $sql.=" LIMIT $position,$qty";
+        
         return $this->loadMoreRows($sql);
     }
     function getNameType($alias){
@@ -30,7 +33,7 @@ class TypeModel extends DBConnect{
     }
 
 
-    function selectProductsByTypeLevel1($alias){
+    function selectProductsByTypeLevel1($alias,$position=0, $qty=0){
         $sql = "SELECT p.*, pu.url
                 FROM products p 
                 INNER JOIN(
@@ -47,6 +50,8 @@ class TypeModel extends DBConnect{
                 ON type.id = p.id_type
                 INNER JOIN page_url pu 
                 ON pu.id = p.id_url";
+        if( $qty != 0)
+            $sql.=" LIMIT $position,$qty";
         return $this->loadMoreRows($sql);           
     }
 }

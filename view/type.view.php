@@ -64,7 +64,7 @@ $products = $data['result']
                             <div class="icon-new-label new-right">New</div>
                             <?endif?>
                           <div class="pr-img-area">
-                            <a title="Ipsums Dolors Untra" href="single_product.html">
+                            <a title="Ipsums Dolors Untra" href="<?=$p->url?>-<?=$p->id?>.html">
                               <figure>
                                 <img class="first-img" src="public/images/products/<?=$p->image?>" alt="">
                                 <img class="hover-img" src="public/images/products/<?=$p->image?>" alt="">
@@ -80,7 +80,7 @@ $products = $data['result']
                         <div class="item-info">
                           <div class="info-inner">
                             <div class="item-title">
-                              <a title="<?=$p->name?>" href="single_product.html"><?=$p->name?></a>
+                              <a title="<?=$p->name?>" href="<?=$p->url?>-<?=$p->id?>.html"><?=$p->name?></a>
                             </div>
                             <div class="item-content">
 
@@ -117,22 +117,7 @@ $products = $data['result']
                 </ul>
               </div>
               <div class="pagination-area ">
-                <ul>
-                  <li>
-                    <a class="active" href="#">1</a>
-                  </li>
-                  <li>
-                    <a href="#">2</a>
-                  </li>
-                  <li>
-                    <a href="#">3</a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="fa fa-angle-right"></i>
-                    </a>
-                  </li>
-                </ul>
+                  <?=$data['showPagination']?>
               </div>
             </div>
           </div>

@@ -18,10 +18,12 @@ class HomeModel extends DBConnect{
     }
 
     function selectBestSeller(){
-        $sql = "SELECT p.*, sum(bd.quantity) as tongsoluong
+        $sql = "SELECT p.*, u.url, sum(bd.quantity) as tongsoluong
                 FROM products p
                 INNER JOIN bill_detail bd
                 ON p.id = bd.id_product
+                INNER JOIN page_url u
+                ON u.id = p.id_url
                 GROUP BY bd.id_product
                 ORDER BY tongsoluong DESC
                 LIMIT 0,10";

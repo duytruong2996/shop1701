@@ -146,7 +146,7 @@ $bestSeller = $data['bestSeller'];
 
 
                                 <div class="pr-img-area">
-                                  <a title="Ipsums Dolors Untra" href="">
+                                  <a title="Ipsums Dolors Untra" href="<?=$p->url?>-<?=$p->id?>.html">
                                     <figure>
                                       <img class="first-img" src="public/images/products/<?=$p->image?>" alt="html template">
                                       <img class="hover-img" src="public/images/products/<?=$p->image?>" alt="html template">
@@ -161,7 +161,7 @@ $bestSeller = $data['bestSeller'];
                               <div class="item-info">
                                 <div class="info-inner">
                                   <div class="item-title">
-                                    <a title="Ipsums Dolors Untra" href="single_product.html"><?=$p->name?></a>
+                                    <a title="Ipsums Dolors Untra" href="<?=$p->url?>-<?=$p->id?>.html"><?=$p->name?></a>
                                   </div>
                                   <div class="item-content">
                                     <div class="item-price">
@@ -467,13 +467,13 @@ $bestSeller = $data['bestSeller'];
               <?for($i=0; $i<3; $i++):?>
               <div class="jtv-product jtv-cat-margin">
                 <div class="product-img">
-                  <a href="single_product.html">
+                  <a href="<?=$bestSeller[$i]->url?>-<?=$bestSeller[$i]->id?>.html">
                     <img src="public/images/products/<?=$bestSeller[$i]->image?>" alt="html template">
                     <img class="secondary-img" src="public/images/products/<?=$bestSeller[$i]->image?>" alt="html template"> </a>
                 </div>
                 <div class="jtv-product-content">
                   <h3>
-                    <a href="single_product.html"><?=$bestSeller[$i]->name?></a>
+                    <a href="<?=$bestSeller[$i]->url?>-<?=$bestSeller[$i]->id?>.html"><?=$bestSeller[$i]->name?></a>
                   </h3>
                   <div class="price-box">
                   <? if($bestSeller[$i]->promotion_price ==0):?>
