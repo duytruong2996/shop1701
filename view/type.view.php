@@ -308,38 +308,38 @@ $products = $data['result']
                   <div class="amount-range-price">Range: 200.000 - 70.000.000</div>
                   <ul class="check-box-list">
                     <li>
-                      <input type="checkbox" id="p1" name="cc" />
-                      <label for="p1">
+                      <input class="checkboxPrice-1"  type="checkbox" id="p1" name="cc" value="200000-1000000"/>
+                      <label class="lblPrice" for="p1">
                         <span class="button"></span> 200.000 - 1.000.000
-                        <span class="count">(0)</span>
+                        <span class="count">(<?=$data['price1']?>)</span>
                       </label>
                     </li>
                     <li>
-                      <input type="checkbox" id="p2" name="cc" />
-                      <label for="p2">
+                      <input  class="checkboxPrice-2"  type="checkbox" id="p2" name="cc" value="1000000-5000000" />
+                      <label class="lblPrice"  for="p2">
                         <span class="button"></span> 1.000.000 - 5.000.000
-                        <span class="count">(0)</span>
+                        <span class="count">(<?=$data['price2']?>)</span>
                       </label>
                     </li>
                     <li>
-                      <input type="checkbox" id="p3" name="cc" />
-                      <label for="p3">
+                      <input class="checkboxPrice-3"  type="checkbox" id="p3" name="cc" value="5000000-10000000" />
+                      <label class="lblPrice"  for="p3">
                         <span class="button"></span> 5.000.000 - 10.000.000
-                        <span class="count">(0)</span>
+                        <span class="count">(<?=$data['price3']?>)</span>
                       </label>
                     </li>
                     <li>
-                      <input type="checkbox" id="p4" name="cc" />
-                      <label for="p4">
+                      <input class="checkboxPrice-4"  type="checkbox" id="p4" name="cc" value="10000000-20000000" />
+                      <label class="lblPrice"  for="p4">
                         <span class="button"></span> 10.000.000 - 20.000.000
-                        <span class="count">(0)</span>
+                        <span class="count">(<?=$data['price4']?>)</span>
                       </label>
                     </li>
                     <li>
-                      <input type="checkbox" id="p5" name="cc" />
-                      <label for="p5">
+                      <input  class="checkboxPrice-5" type="checkbox" id="p5" name="cc" value="20000000" />
+                      <label class="lblPrice"  for="p5">
                         <span class="button"></span> > 20.000.000
-                        <span class="count">(0)</span>
+                        <span class="count">(<?=$data['price5']?>)</span>
                       </label>
                     </li>
                   </ul>
@@ -516,3 +516,17 @@ $products = $data['result']
       </div>
     </div>
     <!-- Main Container End -->
+      
+    <!-- jquery js -->
+    <script type="text/javascript" src="public/js/jquery.min.js"></script>
+           
+    <script>
+      $(document).ready(function(){
+        $('.lblPrice').click(function(){
+            var id = $(this).attr('for');
+            console.log(id)
+            var price = $('#'+id).attr('value');
+            console.log(price)
+        })
+      })
+    </script>

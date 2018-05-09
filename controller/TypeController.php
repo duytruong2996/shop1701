@@ -41,15 +41,11 @@ class TypeController extends BaseController{
             $price4 = $model->countProductsByTypeLevel2($alias,10000000,20000000);
             $price5 = $model->countProductsByTypeLevel2($alias,0,0,20000000);
 
-        //print_r($price3); die;
+        //print_r($price1); die;
         if(count($result)==0 || $type == ''){
             header('Location:404.html');
             return;
         }
-
-
-
-
         $data = [
             'result'=>$result,
             'nameType'=>$type,
