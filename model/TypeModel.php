@@ -75,7 +75,30 @@ class TypeModel extends DBConnect{
             $sql.=" WHERE price BETWEEN $minPrice AND $maxPrice";
         if($priceWhere != 0 )
             $sql.=" WHERE price > $priceWhere";
-        return $this->loadMoreRows($sql);           
+
+        return $this->loadOneRow($sql);           
+    }
+
+    function countProductsByTypeLevel2($alias,$minPrice=0,$maxPrice=0, $priceWhere=0 ){
+        $sql = "SELECT count(p.id) as qty
+                FROM products p 
+                INNER JOIN (
+                    SELECT c.* 
+                    FROM categories c
+                    INNER JOIN page_url u 
+                    ON u.id = c.id_url
+                    WHERE u.url = '$alias'
+                ) type
+                ON p.id_type = type.id
+                INNER JOIN page_url u 
+                ON p.id_url = u.id";
+        
+        if($minPrice != 0 && $maxPrice !=0)
+            $sql.=" WHERE price BETWEEN $minPrice AND $maxPrice";
+        if($priceWhere != 0 )
+            $sql.=" WHERE price > $priceWhere";
+        
+        return $this->loadOneRow($sql);
     }
 }
 
