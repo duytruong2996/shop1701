@@ -303,28 +303,42 @@ $products = $data['result']
               </div>
               <div class="block-content">
                 <div class="slider-range">
-                  <div data-label-reasult="Range:" data-min="0" data-max="500" data-unit="$" class="slider-range-price" data-value-min="50"
-                    data-value-max="350"></div>
-                  <div class="amount-range-price">Range: $10 - $550</div>
+                  <div data-label-reasult="Range:" data-min="200000" data-max="70000000" data-unit="vnd " class="slider-range-price" data-value-min="1000000"
+                    data-value-max="50000000"></div>
+                  <div class="amount-range-price">Range: 200.000 - 70.000.000</div>
                   <ul class="check-box-list">
                     <li>
                       <input type="checkbox" id="p1" name="cc" />
                       <label for="p1">
-                        <span class="button"></span> $20 - $50
+                        <span class="button"></span> 200.000 - 1.000.000
                         <span class="count">(0)</span>
                       </label>
                     </li>
                     <li>
                       <input type="checkbox" id="p2" name="cc" />
                       <label for="p2">
-                        <span class="button"></span> $50 - $100
+                        <span class="button"></span> 1.000.000 - 5.000.000
                         <span class="count">(0)</span>
                       </label>
                     </li>
                     <li>
                       <input type="checkbox" id="p3" name="cc" />
                       <label for="p3">
-                        <span class="button"></span> $100 - $250
+                        <span class="button"></span> 5.000.000 - 10.000.000
+                        <span class="count">(0)</span>
+                      </label>
+                    </li>
+                    <li>
+                      <input type="checkbox" id="p4" name="cc" />
+                      <label for="p4">
+                        <span class="button"></span> 10.000.000 - 20.000.000
+                        <span class="count">(0)</span>
+                      </label>
+                    </li>
+                    <li>
+                      <input type="checkbox" id="p5" name="cc" />
+                      <label for="p5">
+                        <span class="button"></span> > 20.000.000
                         <span class="count">(0)</span>
                       </label>
                     </li>

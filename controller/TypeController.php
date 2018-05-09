@@ -19,7 +19,7 @@ class TypeController extends BaseController{
         if(count($result) == 0)
             $result = $model->selectProductsByTypeLevel2($alias);
         
-        $pager = new Pager(count($result),$page,$qty,5);
+        $pager = new Pager(count($result),$page,$qty,3);
         $showPagination = $pager->showPagination();
         
         $type = $model->getNameType($alias);
