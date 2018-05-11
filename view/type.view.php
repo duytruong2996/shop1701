@@ -524,9 +524,20 @@ $products = $data['result']
       $(document).ready(function(){
         $('.lblPrice').click(function(){
             var id = $(this).attr('for');
-            console.log(id)
             var price = $('#'+id).attr('value');
-            console.log(price)
+            var url = "<?=$_GET['alias']?>"
+            //console.log(url)
+            $.ajax({
+              url: "sort-price.php",
+              type:"GET",
+              data:{
+                priceSend:price,
+                alias: url
+              },
+              success:function(responseFromPHP){
+                console.log(responseFromPHP)
+              }
+            })
         })
       })
     </script>
