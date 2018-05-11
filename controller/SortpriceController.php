@@ -1,8 +1,9 @@
 <?php
-include "model/TypeModel.php";
-include "model/SortPriceModel.php";
+include_once "model/TypeModel.php";
+include_once "model/SortPriceModel.php";
+include_once 'BaseController.php';
 
-class SortpriceController{
+class SortpriceController extends BaseController{
     function sort(){
         $arrPrice = explode('-',$_GET['priceSend']);
         $minPrice = $arrPrice[0];
@@ -33,8 +34,12 @@ class SortpriceController{
                 $products = $model->getProductsByTypeLevel1($alias,0,0,$minPrice);
             }
         }
+        $data = [
+            'products'=>$products,
+            'data-id'=>$_GET['priceSend']
+        ];
+        return $this->loadHtmlSortPrice("sort_price",$data);
 
-        print_r($products);
     }
 }
 

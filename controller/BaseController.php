@@ -12,6 +12,10 @@ class BaseController {
         include_once 'view/layout.view.php';
     }
 
+    function loadHtmlSortPrice($view,$data=[]){
+        include_once "view/ajax/$view.view.php";
+    }
+
 }
 
 

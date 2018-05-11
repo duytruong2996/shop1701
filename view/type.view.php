@@ -526,18 +526,37 @@ $products = $data['result']
             var id = $(this).attr('for');
             var price = $('#'+id).attr('value');
             var url = "<?=$_GET['alias']?>"
+
+            if(!$('#'+id).is(":checked")){
+                $.ajax({
+                url: "sort-price.php",
+                type:"GET",
+                data:{
+                  priceSend:price,
+                  alias: url
+                },
+                success:function(responseFromPHP){
+                  //console.log(responseFromPHP)
+                  
+                  if($('#data-sort').length>0){
+                    $('#data-sort').append(responseFromPHP)
+                    var newID = $('#data-sort').attr('data-id')
+                    $('#data-sort').attr('id',newID)
+                  }
+                  else{
+                    $('.products-grid').html(responseFromPHP)
+                  }
+                }
+              })
+            }
+            else{
+              //$('#data-sort').hide()
+            }
+
+
+
             //console.log(url)
-            $.ajax({
-              url: "sort-price.php",
-              type:"GET",
-              data:{
-                priceSend:price,
-                alias: url
-              },
-              success:function(responseFromPHP){
-                console.log(responseFromPHP)
-              }
-            })
+            
         })
       })
     </script>
