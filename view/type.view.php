@@ -526,7 +526,7 @@ $products = $data['result']
             var id = $(this).attr('for');
             var price = $('#'+id).attr('value');
             var url = "<?=$_GET['alias']?>"
-
+            console.log(price)
             if(!$('#'+id).is(":checked")){
                 $.ajax({
                 url: "sort-price.php",
@@ -539,7 +539,7 @@ $products = $data['result']
                   //console.log(responseFromPHP)
                   
                   if($('#data-sort').length>0){
-                    $('#data-sort').append(responseFromPHP)
+                    $('.products-grid').append(responseFromPHP)
                     var newID = $('#data-sort').attr('data-id')
                     $('#data-sort').attr('id',newID)
                   }
@@ -550,7 +550,9 @@ $products = $data['result']
               })
             }
             else{
-              //$('#data-sort').hide()
+              
+              $('#'+price).hide()
+              $('#data-sort').hide()
             }
 
 
