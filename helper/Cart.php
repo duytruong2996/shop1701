@@ -14,13 +14,14 @@ class Cart
 		}
 	}
 	
-	public function add($item, $qty=1){
-		$giohang = ['qty'=>0, 'price' => $item->price, 'item' => $item];
+	public function add($item, $qty=1){ 
+		$giohang = ['qty'=>0, 'price' => $item->price, 'item' => $item]; 
 		if($this->items){
 			if(array_key_exists($item->id, $this->items)){
 				$giohang = $this->items[$item->id];
 			}
-		}
+        }
+        
 		$giohang['qty'] = $giohang['qty'] + $qty;
 		$giohang['price'] = $item->price * $giohang['qty'];
 		$this->items[$item->id] = $giohang;

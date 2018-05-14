@@ -489,9 +489,23 @@
     </footer>
     <a href="#" class="totop"> </a>
     <!-- End Footer -->
+    <div id="myModal1" class="modal fade " role="dialog">
+    <div class="modal-dialog">
 
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-body">
+          <h5>Đã thêm <i id="name">...</i> vào giỏ hàng</h5>
+          <div><a href="shopping-cart.php">Xem giỏ hàng</a></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
   </div>
-
+  </div>
 
   <!-- JS -->
 
@@ -554,7 +568,27 @@
     });
   </script>
 
-
+  <script>
+    $(document).ready(function(){
+      $('.add-to-cart-mt').click(function(){
+        var id = $(this).attr('id-product');
+        $.ajax({
+          url : "cart.php",
+          type: "POST",
+          data:{
+            idProduct:id
+          },
+          success:function(res){
+            $('#name').text(res)
+            $('#myModal1').modal('show')
+          },
+          error:function(){
+            console.log('error')
+          }
+        })
+      })
+    })
+  </script>
 
 </body>
 

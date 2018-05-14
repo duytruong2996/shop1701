@@ -83,7 +83,7 @@ $bestSeller = $data['bestSeller'];
                                       <img class="hover-img" src="public/images/products/<?=$p->image?>" alt="html template">
                                     </figure>
                                   </a>
-                                  <button type="button" class="add-to-cart-mt">
+                                  <button type="button" class="add-to-cart-mt" id-product="<?=$p->id?>">
                                     <i class="fa fa-shopping-cart"></i>
                                     <span> Add to Cart</span>
                                   </button>
@@ -152,7 +152,7 @@ $bestSeller = $data['bestSeller'];
                                       <img class="hover-img" src="public/images/products/<?=$p->image?>" alt="html template">
                                     </figure>
                                   </a>
-                                  <button type="button" class="add-to-cart-mt">
+                                  <button type="button" class="add-to-cart-mt" id-product="<?=$p->id?>">
                                     <i class="fa fa-shopping-cart"></i>
                                     <span> Add to Cart</span>
                                   </button>
