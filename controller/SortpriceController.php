@@ -36,7 +36,8 @@ class SortpriceController extends BaseController{
         }
         $data = [
             'products'=>$products,
-            'data-id'=>$_GET['priceSend']
+            'data-id'=>$_GET['priceSend'],
+            'id'=>$_GET['id']
         ];
         return $this->loadHtmlSortPrice("sort_price",$data);
 

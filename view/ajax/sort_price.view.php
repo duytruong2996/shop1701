@@ -1,4 +1,4 @@
-<div id="data-sort" data-id="<?=$data['data-id']?>">
+<div id="data-<?=$data['id']?>">
 <?php 
     $products = $data['products'];
 
