@@ -46,7 +46,7 @@ class TypeModel extends DBConnect{
                         ON u.id = c2.id_url
                         WHERE u.url = '$alias'
                     )
-                ) type 
+                ) AS type 
                 ON type.id = p.id_type
                 INNER JOIN page_url pu 
                 ON pu.id = p.id_url";
@@ -67,7 +67,7 @@ class TypeModel extends DBConnect{
                         ON u.id = c2.id_url
                         WHERE u.url = '$alias'
                     )
-                ) type 
+                ) AS type 
                 ON type.id = p.id_type
                 INNER JOIN page_url pu 
                 ON pu.id = p.id_url";
@@ -75,7 +75,7 @@ class TypeModel extends DBConnect{
             $sql.=" WHERE price BETWEEN $minPrice AND $maxPrice";
         if($priceWhere != 0 )
             $sql.=" WHERE price > $priceWhere";
-
+        
         return $this->loadOneRow($sql);           
     }
 
@@ -97,7 +97,7 @@ class TypeModel extends DBConnect{
             $sql.=" WHERE price BETWEEN $minPrice AND $maxPrice";
         if($priceWhere != 0 )
             $sql.=" WHERE price > $priceWhere";
-        
+            
         return $this->loadOneRow($sql);
     }
 }

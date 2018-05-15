@@ -1,6 +1,12 @@
 <?php
 $products = $data['result']
 ?>
+<style>
+  .disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+</style>
     <!-- Main Container -->
     <div class="main-container col2-left-layout">
       <div class="container">
@@ -309,35 +315,35 @@ $products = $data['result']
                   <ul class="check-box-list">
                     <li>
                       <input class="checkboxPrice-1"  type="checkbox" id="p1" name="cc" value="200000-1000000"/>
-                      <label class="lblPrice" for="p1">
+                      <label class="lblPrice <?=$data['price1']==0?"disabled":""?>" for="p1">
                         <span class="button"></span> 200.000 - 1.000.000
                         <span class="count">(<?=$data['price1']?>)</span>
                       </label>
                     </li>
                     <li>
                       <input  class="checkboxPrice-2"  type="checkbox" id="p2" name="cc" value="1000000-5000000" />
-                      <label class="lblPrice"  for="p2">
+                      <label class="lblPrice <?=$data['price2']==0?"disabled":""?>"  for="p2">
                         <span class="button"></span> 1.000.000 - 5.000.000
                         <span class="count">(<?=$data['price2']?>)</span>
                       </label>
                     </li>
                     <li>
                       <input class="checkboxPrice-3"  type="checkbox" id="p3" name="cc" value="5000000-10000000" />
-                      <label class="lblPrice"  for="p3">
+                      <label class="lblPrice <?=$data['price3']==0?"disabled":""?>"  for="p3">
                         <span class="button"></span> 5.000.000 - 10.000.000
                         <span class="count">(<?=$data['price3']?>)</span>
                       </label>
                     </li>
                     <li>
                       <input class="checkboxPrice-4"  type="checkbox" id="p4" name="cc" value="10000000-20000000" />
-                      <label class="lblPrice"  for="p4">
+                      <label class="lblPrice <?=$data['price4']==0?"disabled":""?>"  for="p4">
                         <span class="button"></span> 10.000.000 - 20.000.000
                         <span class="count">(<?=$data['price4']?>)</span>
                       </label>
                     </li>
                     <li>
                       <input  class="checkboxPrice-5" type="checkbox" id="p5" name="cc" value="20000000" />
-                      <label class="lblPrice"  for="p5">
+                      <label class="lblPrice <?=$data['price5']==0?"disabled":""?>"  for="p5">
                         <span class="button"></span> > 20.000.000
                         <span class="count">(<?=$data['price5']?>)</span>
                       </label>
@@ -522,33 +528,41 @@ $products = $data['result']
            
     <script>
       $(document).ready(function(){
+        var oldData = $('.products-grid').html()
+        
         $('.lblPrice').click(function(){
-            var id = $(this).attr('for');
-            var price = $('#'+id).attr('value');
-            var url = "<?=$_GET['alias']?>"
-            if(!$('#'+id).is(":checked")){
-                $.ajax({
-                url: "sort-price.php",
-                type:"GET",
-                data:{
-                  priceSend:price,
-                  alias: url,
-                  id:id
-                },
-                success:function(responseFromPHP){
-                  $('.pagination-area ul').remove()
-                  if($('div[id^="data-"]').length>0){
-                    $('.products-grid').append(responseFromPHP)
-                  }
-                  else{
-                    $('.products-grid').html(responseFromPHP)
-                  }
+          var id = $(this).attr('for');
+          var price = $('#'+id).attr('value');
+          var url = "<?=$_GET['alias']?>"
+          if(!$('#'+id).is(":checked")){
+              $.ajax({
+              url: "sort-price.php",
+              type:"GET",
+              data:{
+                priceSend:price,
+                alias: url,
+                id:id
+              },
+              success:function(responseFromPHP){
+                $('.pagination-area ul').hide()
+                if($('div[id^="data-"]').length>0){
+                  $('.products-grid').append(responseFromPHP)
+                  $('div[id^="data-"] h2').remove()
                 }
-              })
-            }
-            else{
-              $('#data-'+id).remove()
+                else{
+                  $('.products-grid').html(responseFromPHP)
+                }
+              }
+            })
+          }
+          else{
+            $('#data-'+id).remove()
+          }
+          if($('.products-grid').is(':empty')){
+              $('.products-grid').html(oldData)
+              $('.pagination-area ul').show()
             }
         })
+        
       })
     </script>
