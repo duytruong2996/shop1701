@@ -579,8 +579,13 @@
             idProduct:id
           },
           success:function(res){
-            $('#name').text(res)
-            $('#myModal1').modal('show')
+            if($.trim(res) == 'error') {
+              alert('Khong tim thay sp')
+            }
+            else{
+              $('#name').text(res)
+              $('#myModal1').modal('show')
+            }
           },
           error:function(){
             console.log('error')

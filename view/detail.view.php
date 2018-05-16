@@ -49,13 +49,13 @@ $relatedProducts = $data['relatedProducts'];
                 <div class="product-variation">
                   <form action="#" method="post">
                     <div class="cart-plus-minus">
-                      <label for="qty">Quantity:</label>
+                      <label for="qty">Số lượng:</label>
                       <div class="numbers-row">
                         <div   class="dec qtybutton">
                           <i class="fa fa-minus">&nbsp;</i>
                         </div>
                         <input type="text" class="qty" title="Qty" value="1" maxlength="12" id="qty" name="qty">
-                        <div onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty )) result.value++;return false;"
+                        <div 
                           class="inc qtybutton">
                           <i class="fa fa-plus">&nbsp;</i>
                         </div>
@@ -102,7 +102,7 @@ $relatedProducts = $data['relatedProducts'];
                         <div class="pr-img-area">
                           <img class="first-img" src="public/images/products/<?=$p->image?>" alt="">
                           <img class="hover-img" src="public/images/products/<?=$p->image?>" alt="">
-                          <button type="button" class="add-to-cart-mt">
+                          <button type="button" class="add-to-cart-mt" id-product="<?=$p->id?>">
                             <i class="fa fa-shopping-cart"></i>
                             <span> Add to Cart</span>
                           </button>
@@ -150,3 +150,48 @@ $relatedProducts = $data['relatedProducts'];
       </div>
     </section>
     <!-- Related Product Slider End -->
+
+  <script type="text/javascript" src="public/js/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $('.inc').click(function(){
+      var qty = $('#qty').val()
+      qty = !isNaN(qty) ? parseInt(qty) : 0
+      $('#qty').val(qty + 1)
+    })
+    $('.dec').click(function(){
+      var qty = $('#qty').val()
+      qty = !isNaN(qty) ? parseInt(qty) : 1
+      $('#qty').val(qty)
+      if(qty > 1 ){
+        $('#qty').val(qty - 1)
+      }
+    })
+    $('.pro-add-to-cart').click(function(){
+      var qty = $('#qty').val()
+      if(isNaN(qty)){
+        alert("Số lượng là số")
+        $('#qty').focus()
+        $('#qty').val(1)
+      }
+      qty = !isNaN(qty) ? parseInt(qty) : 1
+      var id = "<?=$_GET['id']?>"
+      //console.log(id)
+      $.ajax({
+        url : "cart.php",
+        type: "POST",
+        data:{
+          idProduct : id,
+          quantity: qty
+        },
+        success:function(res){
+          if($.trim(res) == 'error') alert('Khong tim thay sp')
+          else{
+            $('#name').text(res)
+            $('#myModal1').modal('show')
+          }
+        }
+      })
+    })
+  })
+</script>    
