@@ -187,6 +187,8 @@ $relatedProducts = $data['relatedProducts'];
         success:function(res){
           if($.trim(res) == 'error') alert('Khong tim thay sp')
           else{
+            //console.log(res)
+            
             $('#name').text(res)
             $('#myModal1').modal('show')
           }

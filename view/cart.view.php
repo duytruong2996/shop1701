@@ -53,26 +53,19 @@ $cart = $data['cart'];
                       </td>
                       <td class="action"><a href="#"><i class="icon-close"></i></a></td>
                     </tr>
-                    <?php if($c['item']->promotion_price == 0 ){
-                      $price = $c['item']->price ;
-                    }
-                    else{
-                      $price =$c['item']->promotion_price;
-                    }
-                    $total += $price * $c['qty'];
-                    ?>
+                    
                     <?php endforeach?>
                   </tbody>
                   <tfoot>
                     <tr>
                       <td colspan="2" rowspan="2"></td>
-                      <td colspan="3">Total products (tax incl.)</td>
+                      <td colspan="3">Giá gốc</td>
                       <td colspan="2"><?=number_format($cart->totalPrice)?></td>
                     </tr>
                     <tr>
-                      <td colspan="3"><strong>Total</strong></td>
+                      <td colspan="3"><strong>Tổng tiền thanh toán</strong></td>
                       <td colspan="2"><strong>
-                          <?=number_format($total)?>
+                          <?=number_format($cart->promtPrice)?>
                       </strong></td>
                     </tr>
                   </tfoot>

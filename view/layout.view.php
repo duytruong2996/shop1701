@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,15 +5,15 @@
   <!-- Basic page needs -->
   <meta charset="utf-8">
   <!--[if IE]>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <![endif]-->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <![endif]-->
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>MyStore premium HTML5 &amp; CSS3 template</title>
   <meta name="description" content="best template, template free, responsive theme, fashion store, responsive theme, responsive html theme, Premium website templates, web templates, Multi-Purpose Responsive HTML5 Template">
   <meta name="keywords" content="bootstrap, ecommerce, fashion, layout, responsive, responsive template, responsive template download, responsive theme, retail, shop, shopping, store, Premium website templates, web templates, Multi-Purpose Responsive HTML5 Template"
   />
-  <base href="http://localhost/shop1701/">
-  <!-- Mobile specific metas  , -->
+
+  <!-- Mobile specific metas  -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Favicon  -->
@@ -37,7 +36,6 @@
   <!-- owl.carousel CSS -->
   <link rel="stylesheet" type="text/css" href="public/css/owl.carousel.css">
   <link rel="stylesheet" type="text/css" href="public/css/owl.theme.css">
-  <link rel="stylesheet" type="text/css" href="public/css/owl.transitions.css">
 
   <!-- animate CSS  -->
   <link rel="stylesheet" type="text/css" href="public/css/animate.css" media="all">
@@ -49,14 +47,18 @@
   <link rel="stylesheet" type="text/css" href="public/css/jquery-ui.css">
 
   <!-- Revolution Slider CSS -->
-  <link href="public/css/revolution-slider.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="public/css/revolution-slider.css">
 
   <!-- style CSS -->
   <link rel="stylesheet" type="text/css" href="public/css/style.css" media="all">
+
+
 </head>
 
-<body class="cms-index-index cms-home-page">
-
+<body class="shop_grid_page">
+  <!--[if lt IE 8]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
   <!-- mobile menu -->
   <div id="mobile-menu">
     <ul>
@@ -76,7 +78,6 @@
   </div>
   <!-- end mobile menu -->
   <div id="page">
-
     <!-- Header -->
     <header>
       <div class="header-container">
@@ -170,7 +171,7 @@
       </div>
     </header>
     <!-- end header -->
-
+    
     <!-- Navbar -->
     <nav>
       <div class="container">
@@ -188,52 +189,52 @@
                   <h3>Categories</h3>
                 </div>
                 <div class="mega-menu-category">
-                  <ul class="nav">
+                <ul class="nav">
                    
-                    <?php foreach($categories as $c):
-                    if($c->submenu !=''):
-                    ?>
-                    <li>
-                      <a href="<?=$c->url?>">
-                        <i class="icon fa <?=$c->icon?> fa-fw"></i> <?=$c->name?>
-                      </a>
-                      <div class="wrap-popup column1">
-                        <div class="popup">
-                          <div class="row">
-                            <div class="col-md-12">
-                              <ul class="nav">
-                                <?php 
-                                $subMenu = explode(',',$c->submenu);
-                                
-                                //print_r($subMenu);
-                                foreach($subMenu as $sub):
-                                  $sub = explode('::',$sub);
-                        
-                                ?>
+                   <?php foreach($categories as $c):
+                   if($c->submenu !=''):
+                   ?>
+                   <li>
+                     <a href="<?=$c->url?>">
+                       <i class="icon fa <?=$c->icon?> fa-fw"></i> <?=$c->name?>
+                     </a>
+                     <div class="wrap-popup column1">
+                       <div class="popup">
+                         <div class="row">
+                           <div class="col-md-12">
+                             <ul class="nav">
+                               <?php 
+                               $subMenu = explode(',',$c->submenu);
+                               
+                               //print_r($subMenu);
+                               foreach($subMenu as $sub):
+                                 $sub = explode('::',$sub);
+                       
+                               ?>
 
-                                <li>
-                                  <a href="<?=$sub[1]?>">
-                                    <span><?=$sub[0]?></span>
-                                  </a>
-                                </li>
-                                <?php endforeach?>
-                                
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <?php else:?>
+                               <li>
+                                 <a href="<?=$sub[1]?>">
+                                   <span><?=$sub[0]?></span>
+                                 </a>
+                               </li>
+                               <?php endforeach?>
+                               
+                             </ul>
+                           </div>
+                         </div>
+                       </div>
+                     </div>
+                   </li>
+                   <?php else:?>
 
-                    <li class="nosub">
-                      <a href="<?=$c->url?>">
-                        <i class="icon fa <?=$c->icon?> fa-fw"></i><?=$c->name?>
-                      </a>
-                    </li>
-                    <?php endif;?>
-                    <?php endforeach?>
-                  </ul>
+                   <li class="nosub">
+                     <a href="<?=$c->url?>">
+                       <i class="icon fa <?=$c->icon?> fa-fw"></i><?=$c->name?>
+                     </a>
+                   </li>
+                   <?php endif;?>
+                   <?php endforeach?>
+                 </ul>
                 </div>
               </div>
             </div>
@@ -252,7 +253,7 @@
                 </li>
                 <li class="mt-root">
                   <div class="mt-root-item">
-                    <a href="contact_us.html">
+                    <a href="shop_grid.html">
                       <div class="title title_font">
                         <span class="title-text">Contact Us</span>
                       </div>
@@ -515,23 +516,22 @@
   <!-- bootstrap js -->
   <script type="text/javascript" src="public/js/bootstrap.min.js"></script>
 
-
   <!-- owl.carousel.min js -->
   <script type="text/javascript" src="public/js/owl.carousel.min.js"></script>
 
   <!-- bxslider js -->
   <script type="text/javascript" src="public/js/jquery.bxslider.js"></script>
+  
+  <!-- flexslider js -->
+  <script type="text/javascript" src="public/js/jquery.flexslider.js"></script>
 
-  <!-- Slider Js -->
-  <script type="text/javascript" src="public/js/revolution-slider.js"></script>
 
   <!-- megamenu js -->
   <script type="text/javascript" src="public/js/megamenu.js"></script>
   <script type="text/javascript">
     /* <![CDATA[ */
     var mega_menu = '0';
-
-  /* ]]> */
+    /* ]]> */
   </script>
 
   <!-- jquery.mobile-menu js -->
@@ -546,28 +546,29 @@
   <!-- countdown js -->
   <script type="text/javascript" src="public/js/countdown.js"></script>
 
-  <!-- Revolution Slider -->
-  <script type="text/javascript">
-    jQuery(document).ready(function () {
-      jQuery('.tp-banner').revolution(
-        {
-          delay: 9000,
-          startwidth: 1170,
-          startheight: 530,
-          hideThumbs: 10,
+  <!--cloud-zoom js -->
+  <script type="text/javascript" src="public/js/cloud-zoom.js"></script>
+      <!-- Slider Js -->
+      <script type="text/javascript" src="public/js/revolution-slider.js"></script>
 
-          navigationType: "bullet",
-          navigationStyle: "preview1",
-
-          hideArrowsOnMobile: "on",
-
-          touchenabled: "on",
-          onHoverStop: "on",
-          spinner: "spinner4"
-        });
-    });
-  </script>
-
+    <!-- Revolution Slider -->
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('.tp-banner').revolution(
+          {
+            delay: 9000,
+            startwidth: 1170,
+            startheight: 530,
+            hideThumbs: 10,
+            navigationType: "bullet",
+            navigationStyle: "preview1",
+            hideArrowsOnMobile: "on",
+            touchenabled: "on",
+            onHoverStop: "on",
+            spinner: "spinner4"
+          });
+      });
+    </script>
   <script>
     $(document).ready(function(){
       $('.add-to-cart-mt').click(function(){
@@ -583,6 +584,7 @@
               alert('Khong tim thay sp')
             }
             else{
+              // console.log(res)
               $('#name').text(res)
               $('#myModal1').modal('show')
             }
