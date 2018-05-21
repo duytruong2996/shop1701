@@ -11,7 +11,7 @@ class CartController extends BaseController{
         $data = [
             'cart'=>$cart
         ];
-        //print_r($cart); die;
+        print_r($cart); die;
         return $this->loadView('cart', $data);
     }
 
