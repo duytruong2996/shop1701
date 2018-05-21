@@ -27,7 +27,7 @@
                     <li class="row">
                         <div class="col-sm-6">
                             <label for="email_address" class="required">Email</label>
-                            <input type="text" class="input form-control" name="" id="email_address">
+                            <input type="text" class="input form-control" name="email" id="email_address">
                         </div><!--/ [col] -->
                         <div class="col-xs-6">
                             <label for="address" class="required">Địa chỉ</label>
@@ -46,7 +46,7 @@
 
                         <div class="col-sm-6">
                             <label class="required">Hình thức thanh toán</label>
-                                <select class="input form-control" name="">
+                                <select class="input form-control" name="payment_method">
                                     <option value="COD">COD</option>
                                     <option value="nhận tại cửa hàng">Nhận tại của hàng</option>
                                 </select>
@@ -61,7 +61,7 @@
                         </div><!--/ [col] -->
                     </li><!--/ .row -->
                     <li>
-                        <button type="submit" class="button"><i class="fa fa-angle-double-right"></i>&nbsp; <span>Đặt hàng</span></button>
+                        <button type="submit" name="btnCheckout" class="button"><i class="fa fa-angle-double-right"></i>&nbsp; <span>Đặt hàng</span></button>
                     </li>
                 </ul>
                 </form>
