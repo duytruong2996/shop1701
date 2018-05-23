@@ -2,9 +2,15 @@
 require_once 'BaseController.php';
 require_once 'model/CheckoutModel.php';
 require_once 'helper/Cart.php';
+require_once 'helper/functions.php';
+require_once "helper/PHPMailer/mailer.php";
+
 session_start();
 
 class CheckoutController extends BaseController{
+    function __construct(){
+        date_default_timezone_set('Asia/Ho_Chi_Minh');
+    }
 
     function getCheckout(){
         return $this->loadView('checkout');
@@ -31,8 +37,11 @@ class CheckoutController extends BaseController{
             $dateOrder = date('Y-m-d');
             $total = $cart->totalPrice;
             $promtPrice = $cart->promtPrice;
-            $token = "sdfghsdfddcsfref23456taedfv";
+
+            $token = createToken();
+            
             $tokenDate = date('Y-m-d H:i:s');
+            $tokenTime = strtotime($tokenDate);
             $idBill = $model->saveBill($idCustomer, $dateOrder, $total, $promtPrice,$paymentMethod, $note,$token , $tokenDate);
 
             if($idBill){
@@ -41,18 +50,29 @@ class CheckoutController extends BaseController{
                     $price = $item['price'];
                     $detail = $model->saveBillDetail($idBill, $idProduct,$qty, $price);
                 }
-                echo 'success';die;
+                
                 //gui mail cho cus
+                $link = "http://localhost/shop1701/$token/$tokenTime";
+                $subject = "SHOP 1701 - XÁC NHẬN ĐƠN HÀNG";
+                $content = "
+                Chào bạn $name,
+                <br/>
+                .....
+                <br/>
+                Vui lòng nhấp vào link sau để xác nhận đơn hàng của bạn:
+                $link
+                ";
 
-                //thong bao cho customer
-                //thanh cong
+                sendMail($email, $name, $subject, $content);
+                unset($_SESSION['cart']);
+                $_SESSION['message_success'] = "Đặt hàng thành công, vui lòng kiểm tra email để xác nhận đơn hàng";
             }
 
         }
         else{
-            //error
+            $_SESSION['message_error'] = "Đặt hàng không thành công, vui lòng kiểm tra lại";
         }
-        
+        header('Location:checkout.php');
     }
 }
 

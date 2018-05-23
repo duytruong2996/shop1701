@@ -3,6 +3,33 @@
 <section class="main-container col2-right-layout">
   <div class="main container">
     <div class="row">
+        <?php
+        if(isset($_SESSION['message_error'])):
+        ?>
+        <div class="col-md-6 col-md-offset-3">
+            <div class="alert alert-danger">
+                <?=$_SESSION['message_error'];
+                unset($_SESSION['message_error']);
+                ?>
+            </div>
+        </div>
+        <?php
+        endif
+        ?>
+        <?php
+        if(isset($_SESSION['message_success'])):
+        ?>
+        <div class="col-md-6 col-md-offset-3">
+            <div class="alert alert-success">
+                <?=$_SESSION['message_success'];
+                unset($_SESSION['message_success']);?>
+            </div>
+        </div>
+        <?php
+        endif
+        ?>
+    </div>
+    <div class="row">
       <div class="col-main col-sm-12 col-xs-12">
         <div class="page-content checkout-page"><div class="page-title">
           <h2>Checkout</h2>

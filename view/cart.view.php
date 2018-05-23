@@ -79,7 +79,7 @@ $cart = $data['cart'];
                   </tfoot>
                 </table>
               </div>
-              <div class="cart_navigation"> <a class="continue-btn" href="./"><i class="fa fa-arrow-left"> </i>&nbsp; Về trang chủ</a> <a class="checkout-btn" href="#"><i class="fa fa-check"></i> Đặt hàng</a> </div>
+              <div class="cart_navigation"> <a class="continue-btn" href="./"><i class="fa fa-arrow-left"> </i>&nbsp; Về trang chủ</a> <a class="checkout-btn" href="checkout.php"><i class="fa fa-check"></i> Đặt hàng</a> </div>
             </div>
             <?php else :?>
             <div class="page-title">
