@@ -74,6 +74,30 @@ class CheckoutController extends BaseController{
         }
         header('Location:checkout.php');
     }
+
+    function getConfirmOrder(){
+        $token = $_GET['token'];
+        $oldTime = $_GET['tokentime'];
+
+        $model = new CheckoutModel();
+        $bill = $model->findBillByToken($token);
+        if($bill){
+            $today = strtotime(date("Y-m-d H:i:s",time())); 
+            
+            if($today - $oldTime <= 86400 ){
+               //xac nhan don hang bang cach update status=1, xoa token&tokendate
+                $model->updateStatusBill($token);
+                $_SESSION['message_success'] = "Xác nhận đơn hàng thành công. Cảm ơn bạn, chúng tôi sẽ sớm liên hệ  với bạn ......";
+            }
+            else{
+                $_SESSION['message_error'] = "Thời gian xác nhận đơn hàng đã hết hạng, vui lòng đặt hàng lại";
+            }
+        }
+        else{
+            $_SESSION['message_error'] = "Liên kết bạn nhập vào không hợp lệ, vui lòng kiểm tra lại";
+        }
+        header('Location:http://localhost/shop1701/checkout.php');
+    }
 }
 
 ?>
